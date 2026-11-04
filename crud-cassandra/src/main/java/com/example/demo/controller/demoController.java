@@ -1,5 +1,5 @@
 package com.example.demo.controller;
-import com.datastax.driver.core.utils.UUIDs;
+import com.datastax.oss.driver.api.core.uuid.Uuids;
 import com.example.demo.model.demoModel;
 import com.example.demo.repository.demoDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class demoController {
 
     @PostMapping(value= "/")
     public demoModel createCs(@RequestBody demoModel obj) {
-        obj.setId(UUIDs.timeBased());
+        obj.setId(Uuids.timeBased());
         demoModel item = dao.save(obj);
         return item;
     }
